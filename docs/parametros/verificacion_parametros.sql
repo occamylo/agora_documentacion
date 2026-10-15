@@ -1,4 +1,4 @@
--- Verificación 1: conteo por tabla (esperado: 1 / 12 / 136)
+-- Verificación 1: conteo por tabla (esperado: 1 / 14 / 140)
 SELECT
     (
         SELECT COUNT(*)
@@ -25,7 +25,9 @@ SELECT
               'Gran contribuyente DIAN',
               'Autorretenedor en renta',
               'Aplica exención ICA Bogotá',
-              'RUP Vigente'
+              'RUP Vigente',
+              'Obligación de factura electrónica',
+              'Operaciones en moneda extranjera'
           )
     ) AS tipo_parametro,
     (
@@ -49,7 +51,9 @@ SELECT
               'Gran contribuyente DIAN',
               'Autorretenedor en renta',
               'Aplica exención ICA Bogotá',
-              'RUP Vigente'
+              'RUP Vigente',
+              'Obligación de factura electrónica',
+              'Operaciones en moneda extranjera'
           )
     ) AS parametro;
 
@@ -115,7 +119,9 @@ WHERE a.nombre = 'Información Tributaria'
       'Gran contribuyente DIAN',
       'Autorretenedor en renta',
       'Aplica exención ICA Bogotá',
-      'RUP Vigente'
+      'RUP Vigente',
+      'Obligación de factura electrónica',
+      'Operaciones en moneda extranjera'
   )
 GROUP BY
     t.id,
@@ -149,7 +155,9 @@ WHERE a.nombre = 'Información Tributaria'
       'Gran contribuyente DIAN',
       'Autorretenedor en renta',
       'Aplica exención ICA Bogotá',
-      'RUP Vigente'
+      'RUP Vigente',
+      'Obligación de factura electrónica',
+      'Operaciones en moneda extranjera'
   )
 GROUP BY
     t.id,
@@ -184,7 +192,9 @@ WHERE a.nombre = 'Información Tributaria'
       'Gran contribuyente DIAN',
       'Autorretenedor en renta',
       'Aplica exención ICA Bogotá',
-      'RUP Vigente'
+      'RUP Vigente',
+      'Obligación de factura electrónica',
+      'Operaciones en moneda extranjera'
   )
   AND (
       p.activo IS DISTINCT FROM TRUE
@@ -217,7 +227,9 @@ WHERE a.nombre = 'Información Tributaria'
       'Gran contribuyente DIAN',
       'Autorretenedor en renta',
       'Aplica exención ICA Bogotá',
-      'RUP Vigente'
+      'RUP Vigente',
+      'Obligación de factura electrónica',
+      'Operaciones en moneda extranjera'
   )
 GROUP BY
     t.id,

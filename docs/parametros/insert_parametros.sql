@@ -1,3 +1,5 @@
+BEGIN;
+
 -- ============================================================
 -- 1. INSERCIÓN DE TIPO_PARAMETRO ASOCIADO AL AREA DE IT
 -- ============================================================
@@ -311,6 +313,58 @@ WHERE a.nombre = 'Información Tributaria'
       SELECT 1
       FROM parametros.tipo_parametro t
       WHERE t.codigo_abreviacion = 'RUP_VIGENTE'
+        AND t.area_tipo_id = a.id
+  );
+
+-- ============================================================
+-- 1.13 OBLIGADO A FACTURAR ELECTRÓNICAMENTE
+-- ============================================================
+
+INSERT INTO parametros.tipo_parametro
+    (nombre, descripcion, codigo_abreviacion, activo, numero_orden,
+     fecha_creacion, fecha_modificacion, area_tipo_id)
+SELECT 'Obligación de factura electrónica',
+       'Descriptor que define si se tiene la obligación de facturar electrónicamente',
+       'OBLIGACIÓN_FACTURA_ELECTRÓNICA',
+       TRUE,
+       COALESCE((SELECT MAX(tp.numero_orden)
+                 FROM parametros.tipo_parametro tp
+                 WHERE tp.area_tipo_id = a.id), 0) + 1,
+       CURRENT_TIMESTAMP,
+       CURRENT_TIMESTAMP,
+       a.id
+FROM parametros.area_tipo a
+WHERE a.nombre = 'Información Tributaria'
+  AND NOT EXISTS (
+      SELECT 1
+      FROM parametros.tipo_parametro t
+      WHERE t.codigo_abreviacion = 'OBLIGACIÓN_FACTURA_ELECTRÓNICA'
+        AND t.area_tipo_id = a.id
+  );
+
+-- ============================================================
+-- 1.14 OPERACIONES EN MONEDA EXTRANJERA
+-- ============================================================
+
+INSERT INTO parametros.tipo_parametro
+    (nombre, descripcion, codigo_abreviacion, activo, numero_orden,
+     fecha_creacion, fecha_modificacion, area_tipo_id)
+SELECT 'Operaciones en moneda extranjera',
+       'Descriptor que define si realiza operaciones en moneda extranjera',
+       'OPERACIONES_MONEDA_EXTRANJERA',
+       TRUE,
+       COALESCE((SELECT MAX(tp.numero_orden)
+                 FROM parametros.tipo_parametro tp
+                 WHERE tp.area_tipo_id = a.id), 0) + 1,
+       CURRENT_TIMESTAMP,
+       CURRENT_TIMESTAMP,
+       a.id
+FROM parametros.area_tipo a
+WHERE a.nombre = 'Información Tributaria'
+  AND NOT EXISTS (
+      SELECT 1
+      FROM parametros.tipo_parametro t
+      WHERE t.codigo_abreviacion = 'OPERACIONES_MONEDA_EXTRANJERA'
         AND t.area_tipo_id = a.id
   );
 
@@ -1100,3 +1154,115 @@ WHERE NOT EXISTS (
     WHERE existente.tipo_parametro_id = tp.id
       AND existente.codigo_abreviacion = v.codigo_abreviacion
 );
+
+-- ============================================================
+-- 2.13 OPCIONES OBLIGADO A FACTURAR ELECTRÓNICAMENTE
+-- ============================================================
+
+INSERT INTO parametros.parametro (
+    nombre,
+    descripcion,
+    codigo_abreviacion,
+    activo,
+    numero_orden,
+    fecha_creacion,
+    fecha_modificacion,
+    tipo_parametro_id,
+    parametro_padre_id
+)
+SELECT
+    v.nombre,
+    v.descripcion,
+    v.codigo_abreviacion,
+    TRUE,
+    v.numero_orden,
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP,
+    tp.id,
+    NULL
+FROM (
+    VALUES
+        (
+            'FACTURA_ELECTRÓNICAMENTE',
+            'Sí',
+            'Está obligado a facturar electrónicamente',
+            1
+        ),
+        (
+            'NO_FACTURA_ELECTRÓNICAMENTE',
+            'No',
+            'No está obligado a facturar electrónicamente',
+            2
+        )
+) AS v(codigo_abreviacion, nombre, descripcion, numero_orden)
+CROSS JOIN (
+    SELECT tp.id
+    FROM parametros.tipo_parametro tp
+    INNER JOIN parametros.area_tipo area
+        ON area.id = tp.area_tipo_id
+    WHERE tp.nombre = 'Obligación de factura electrónica'
+      AND area.nombre = 'Información Tributaria'
+) AS tp
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM parametros.parametro existente
+    WHERE existente.tipo_parametro_id = tp.id
+      AND existente.codigo_abreviacion = v.codigo_abreviacion
+);
+
+-- ============================================================
+-- 2.14 OPCIONES OPERACIONES EN MONEDA EXTRANJERA
+-- ============================================================
+
+INSERT INTO parametros.parametro (
+    nombre,
+    descripcion,
+    codigo_abreviacion,
+    activo,
+    numero_orden,
+    fecha_creacion,
+    fecha_modificacion,
+    tipo_parametro_id,
+    parametro_padre_id
+)
+SELECT
+    v.nombre,
+    v.descripcion,
+    v.codigo_abreviacion,
+    TRUE,
+    v.numero_orden,
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP,
+    tp.id,
+    NULL
+FROM (
+    VALUES
+        (
+            'OPERA_MONEDA_EXTRANJERA',
+            'Sí',
+            'Opera en moneda extranjera',
+            1
+        ),
+        (
+            'NO_OPERA_MONEDA_EXTRANJERA',
+            'No',
+            'No opera en moneda extranjera',
+            2
+        )
+) AS v(codigo_abreviacion, nombre, descripcion, numero_orden)
+CROSS JOIN (
+    SELECT tp.id
+    FROM parametros.tipo_parametro tp
+    INNER JOIN parametros.area_tipo area
+        ON area.id = tp.area_tipo_id
+    WHERE tp.nombre = 'Operaciones en moneda extranjera'
+      AND area.nombre = 'Información Tributaria'
+) AS tp
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM parametros.parametro existente
+    WHERE existente.tipo_parametro_id = tp.id
+      AND existente.codigo_abreviacion = v.codigo_abreviacion
+);
+
+COMMIT;
