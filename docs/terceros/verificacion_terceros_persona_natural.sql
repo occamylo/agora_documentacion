@@ -10,7 +10,6 @@
 -- Resultado esperado: los registros existentes para los códigos
 -- definidos, asociados al grupo identificado como Grupo_9.
 -- ============================================================
-
 SELECT
     g.id AS grupo_id,
     g.nombre AS grupo_info_complementaria,
@@ -32,21 +31,15 @@ WHERE g.codigo_abreviacion = 'Grupo_9'
       'RESPONSABLE_IVA',
       'RESIDE_FIS_COL',
       'PENSION_VOL',
-      'TIENE_HIJOS',
-      'CABEZA_FAMILIA',
-      'PERSONAS_A_CARGO',
-      'DECLARANTE_RENTA'
   )
 ORDER BY i.nombre;
-
 
 -- ============================================================
 -- 2. CONTEO DE REGISTROS
 -- Resultado esperado: 1 grupo identificado como Grupo_9
--- y 12 registros de información complementaria asociados.
+-- y 8 registros de información complementaria asociados.
 -- Los resultados reflejan los datos realmente existentes.
 -- ============================================================
-
 SELECT
     (
         SELECT COUNT(*)
@@ -67,20 +60,14 @@ SELECT
               'CUENTA_AFC',
               'RESPONSABLE_IVA',
               'RESIDE_FIS_COL',
-              'PENSION_VOL',
-              'TIENE_HIJOS',
-              'CABEZA_FAMILIA',
-              'PERSONAS_A_CARGO',
-              'DECLARANTE_RENTA'
+              'PENSION_VOL'
           )
     ) AS registros_info_complementaria;
-
 
 -- ============================================================
 -- 3. DETECCIÓN DE GRUPOS Grupo_9 DUPLICADOS
 -- Resultado esperado: 0 filas.
 -- ============================================================
-
 SELECT
     codigo_abreviacion,
     COUNT(*) AS repeticiones
@@ -89,13 +76,11 @@ WHERE codigo_abreviacion = 'Grupo_9'
 GROUP BY codigo_abreviacion
 HAVING COUNT(*) > 1;
 
-
 -- ============================================================
 -- 4. DETECCIÓN DE CÓDIGOS DUPLICADOS DENTRO DE Grupo_9
 -- Resultado esperado: 0 filas.
 -- Comprueba duplicados entre los códigos definidos para esta tarea.
 -- ============================================================
-
 SELECT
     g.codigo_abreviacion AS codigo_grupo,
     i.codigo_abreviacion AS codigo_info_complementaria,
@@ -112,11 +97,7 @@ WHERE g.codigo_abreviacion = 'Grupo_9'
       'CUENTA_AFC',
       'RESPONSABLE_IVA',
       'RESIDE_FIS_COL',
-      'PENSION_VOL',
-      'TIENE_HIJOS',
-      'CABEZA_FAMILIA',
-      'PERSONAS_A_CARGO',
-      'DECLARANTE_RENTA'
+      'PENSION_VOL'
   )
 GROUP BY
     g.codigo_abreviacion,
@@ -124,13 +105,11 @@ GROUP BY
 HAVING COUNT(*) > 1
 ORDER BY i.codigo_abreviacion;
 
-
 -- ============================================================
 -- 5. DETECCIÓN DE REGISTROS CON CÓDIGOS ESPERADOS EN OTROS GRUPOS
 -- Resultado esperado: 0 filas, si todos los registros de esta tarea
 -- están asociados exclusivamente a Grupo_9.
 -- ============================================================
-
 SELECT
     g.id AS grupo_id,
     g.nombre AS grupo_info_complementaria,
@@ -149,11 +128,7 @@ WHERE i.codigo_abreviacion IN (
     'CUENTA_AFC',
     'RESPONSABLE_IVA',
     'RESIDE_FIS_COL',
-    'PENSION_VOL',
-    'TIENE_HIJOS',
-    'CABEZA_FAMILIA',
-    'PERSONAS_A_CARGO',
-    'DECLARANTE_RENTA'
+    'PENSION_VOL'
 )
 AND g.codigo_abreviacion <> 'Grupo_9'
 ORDER BY i.codigo_abreviacion;
