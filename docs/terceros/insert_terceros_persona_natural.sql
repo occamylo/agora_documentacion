@@ -115,54 +115,6 @@ VALUES
         NOW(),
         NOW(),
         'PENSION_VOL'
-    ),
-    (
-        'Tiene hijos',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE codigo_abreviacion = 'Grupo_9'
-        ),
-        TRUE,
-        NOW(),
-        NOW(),
-        'TIENE_HIJOS'
-    ),
-    (
-        'Cabeza de familia',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE codigo_abreviacion = 'Grupo_9'
-        ),
-        TRUE,
-        NOW(),
-        NOW(),
-        'CABEZA_FAMILIA'
-    ),
-    (
-        'Tiene personas a cargo',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE codigo_abreviacion = 'Grupo_9'
-        ),
-        TRUE,
-        NOW(),
-        NOW(),
-        'PERSONAS_A_CARGO'
-    ),
-    (
-        'Declarante de renta',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE codigo_abreviacion = 'Grupo_9'
-        ),
-        TRUE,
-        NOW(),
-        NOW(),
-        'DECLARANTE_RENTA'
     );
 
 COMMIT;
