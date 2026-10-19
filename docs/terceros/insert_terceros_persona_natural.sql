@@ -1,531 +1,168 @@
 -- CATÁLOGOS PARAMÉTRICOS - TERCEROS
--- ============================================================
+
+-- Inserciones de información complementaria — Grupo_9
+
 BEGIN;
+
 -- ============================================================
--- GRUPOS DE INFORMACIÓN COMPLEMENTARIA
+-- INFORMACIÓN SOCIOECONÓMICA (Grupo_9)
 -- ============================================================
-INSERT INTO terceros.grupo_info_complementaria (
-        nombre,
-        descripcion,
-        codigo_abreviacion,
-        activo,
-        fecha_creacion,
-        fecha_modificacion
-    )
-VALUES (
+-- Cada registro representa un campo de información complementaria.
+-- No se crean opciones independientes de "Sí" y "No".
+-- Se utiliza el grupo existente identificado por Grupo_9: Información socio económica.
+
+INSERT INTO terceros.info_complementaria (
+    nombre,
+    grupo_info_complementaria_id,
+    activo,
+    fecha_creacion,
+    fecha_modificacion,
+    codigo_abreviacion
+)
+VALUES
+    (
         'Migrante',
-        'Indica si la persona es migrante.',
-        'MIGRANTE',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'MIGRANTE'
     ),
     (
         'Víctima del conflicto',
-        'Indica si la persona es víctima del conflicto.',
-        'VICTIMA_CONFLICTO',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'VICTIMA_CONFLICTO'
     ),
     (
         'Persona expuesta políticamente (PEP)',
-        'Indica si la persona es políticamente expuesta.',
-        'PERSONA_EXPUESTA_POLITICAMENTE_PEP',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'PERSONA_PEP'
     ),
     (
         'Posee medicina prepagada actualmente',
-        'Indica si la persona tiene medicina prepagada.',
-        'MEDICINA_PREPAGADA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'MED_PREPAGADA'
     ),
     (
         'Posee cuenta AFC (Ahorro para el Fomento de la Construcción)',
-        'Indica si la persona posee una cuenta AFC.',
-        'CUENTA_AFC',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'CUENTA_AFC'
     ),
     (
         'Es responsable del IVA',
-        'Indica si la persona es responsable del IVA.',
-        'RESPONSABLE_IVA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'RESPONSABLE_IVA'
     ),
     (
         'Reside fiscalmente en Colombia',
-        'Indica si la persona reside fiscalmente en Colombia.',
-        'RESIDE_FISCALMENTE_COLOMBIA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'RESIDE_FIS_COL'
     ),
     (
         'Realiza aportes a pensión voluntaria',
-        'Indica si la persona aporta a pensión voluntaria.',
-        'APORTES_PENSION_VOLUNTARIA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'PENSION_VOL'
     ),
     (
         'Tiene hijos',
-        'Indica si la persona tiene hijos.',
-        'TIENE_HIJOS',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'TIENE_HIJOS'
     ),
     (
         'Cabeza de familia',
-        'Indica si la persona es cabeza de familia.',
-        'CABEZA_FAMILIA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'CABEZA_FAMILIA'
     ),
     (
         'Tiene personas a cargo',
-        'Indica si la persona tiene personas a cargo.',
-        'PERSONAS_A_CARGO',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'PERSONAS_A_CARGO'
     ),
     (
         'Declarante de renta',
-        'Indica si la persona declara renta.',
-        'DECLARANTE_RENTA',
+        (
+            SELECT id
+            FROM terceros.grupo_info_complementaria
+            WHERE codigo_abreviacion = 'Grupo_9'
+        ),
         TRUE,
-        NOW (),
-        NOW ()
+        NOW(),
+        NOW(),
+        'DECLARANTE_RENTA'
     );
--- ============================================================
--- MIGRANTE
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Migrante'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Migrante'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- VÍCTIMA DEL CONFLICTO
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Víctima del conflicto'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Víctima del conflicto'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- PERSONA EXPUESTA POLÍTICAMENTE (PEP)
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Persona expuesta políticamente (PEP)'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Persona expuesta políticamente (PEP)'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- MEDICINA PREPAGADA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Posee medicina prepagada actualmente'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Posee medicina prepagada actualmente'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- CUENTA AFC
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Posee cuenta AFC (Ahorro para el Fomento de la Construcción)'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Posee cuenta AFC (Ahorro para el Fomento de la Construcción)'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- RESPONSABLE DEL IVA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Es responsable del IVA'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Es responsable del IVA'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- RESIDENCIA FISCAL EN COLOMBIA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Reside fiscalmente en Colombia'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Reside fiscalmente en Colombia'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- APORTES A PENSIÓN VOLUNTARIA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Realiza aportes a pensión voluntaria'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Realiza aportes a pensión voluntaria'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- TIENE HIJOS
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Tiene hijos'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Tiene hijos'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- CABEZA DE FAMILIA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Cabeza de familia'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Cabeza de familia'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- PERSONAS A CARGO
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Tiene personas a cargo'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Tiene personas a cargo'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
--- ============================================================
--- DECLARANTE DE RENTA
--- ============================================================
-INSERT INTO terceros.info_complementaria (
-        nombre,
-        grupo_info_complementaria_id,
-        activo,
-        fecha_creacion,
-        fecha_modificacion,
-        codigo_abreviacion
-    )
-VALUES (
-        'Sí',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Declarante de renta'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'SI'
-    ),
-    (
-        'No',
-        (
-            SELECT id
-            FROM terceros.grupo_info_complementaria
-            WHERE nombre = 'Declarante de renta'
-        ),
-        TRUE,
-        NOW (),
-        NOW (),
-        'NO'
-    );
+
 COMMIT;
