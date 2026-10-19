@@ -4,7 +4,7 @@ BEGIN;
 -- ============================================================
 -- GRUPOS DE INFORMACIÓN COMPLEMENTARIA
 -- ============================================================
-INSERT INTO terceros_crud.grupo_info_complementaria (
+INSERT INTO terceros.grupo_info_complementaria (
         nombre,
         descripcion,
         codigo_abreviacion,
@@ -111,7 +111,7 @@ VALUES (
 -- ============================================================
 -- MIGRANTE
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -123,7 +123,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Migrante'
         ),
         TRUE,
@@ -135,7 +135,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Migrante'
         ),
         TRUE,
@@ -146,7 +146,7 @@ VALUES (
 -- ============================================================
 -- VÍCTIMA DEL CONFLICTO
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -158,7 +158,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Víctima del conflicto'
         ),
         TRUE,
@@ -170,7 +170,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Víctima del conflicto'
         ),
         TRUE,
@@ -181,7 +181,7 @@ VALUES (
 -- ============================================================
 -- PERSONA EXPUESTA POLÍTICAMENTE (PEP)
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -193,7 +193,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Persona expuesta políticamente (PEP)'
         ),
         TRUE,
@@ -205,7 +205,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Persona expuesta políticamente (PEP)'
         ),
         TRUE,
@@ -216,7 +216,7 @@ VALUES (
 -- ============================================================
 -- MEDICINA PREPAGADA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -228,7 +228,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Posee medicina prepagada actualmente'
         ),
         TRUE,
@@ -240,7 +240,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Posee medicina prepagada actualmente'
         ),
         TRUE,
@@ -251,7 +251,7 @@ VALUES (
 -- ============================================================
 -- CUENTA AFC
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -263,7 +263,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Posee cuenta AFC (Ahorro para el Fomento de la Construcción)'
         ),
         TRUE,
@@ -275,7 +275,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Posee cuenta AFC (Ahorro para el Fomento de la Construcción)'
         ),
         TRUE,
@@ -286,7 +286,7 @@ VALUES (
 -- ============================================================
 -- RESPONSABLE DEL IVA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -298,7 +298,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Es responsable del IVA'
         ),
         TRUE,
@@ -310,7 +310,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Es responsable del IVA'
         ),
         TRUE,
@@ -321,7 +321,7 @@ VALUES (
 -- ============================================================
 -- RESIDENCIA FISCAL EN COLOMBIA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -333,7 +333,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Reside fiscalmente en Colombia'
         ),
         TRUE,
@@ -345,7 +345,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Reside fiscalmente en Colombia'
         ),
         TRUE,
@@ -356,7 +356,7 @@ VALUES (
 -- ============================================================
 -- APORTES A PENSIÓN VOLUNTARIA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -368,7 +368,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Realiza aportes a pensión voluntaria'
         ),
         TRUE,
@@ -380,7 +380,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Realiza aportes a pensión voluntaria'
         ),
         TRUE,
@@ -391,7 +391,7 @@ VALUES (
 -- ============================================================
 -- TIENE HIJOS
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -403,7 +403,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Tiene hijos'
         ),
         TRUE,
@@ -415,7 +415,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Tiene hijos'
         ),
         TRUE,
@@ -426,7 +426,7 @@ VALUES (
 -- ============================================================
 -- CABEZA DE FAMILIA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -438,7 +438,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Cabeza de familia'
         ),
         TRUE,
@@ -450,7 +450,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Cabeza de familia'
         ),
         TRUE,
@@ -461,7 +461,7 @@ VALUES (
 -- ============================================================
 -- PERSONAS A CARGO
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -473,7 +473,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Tiene personas a cargo'
         ),
         TRUE,
@@ -485,7 +485,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Tiene personas a cargo'
         ),
         TRUE,
@@ -496,7 +496,7 @@ VALUES (
 -- ============================================================
 -- DECLARANTE DE RENTA
 -- ============================================================
-INSERT INTO terceros_crud.info_complementaria (
+INSERT INTO terceros.info_complementaria (
         nombre,
         grupo_info_complementaria_id,
         activo,
@@ -508,7 +508,7 @@ VALUES (
         'Sí',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Declarante de renta'
         ),
         TRUE,
@@ -520,7 +520,7 @@ VALUES (
         'No',
         (
             SELECT id
-            FROM terceros_crud.grupo_info_complementaria
+            FROM terceros.grupo_info_complementaria
             WHERE nombre = 'Declarante de renta'
         ),
         TRUE,
