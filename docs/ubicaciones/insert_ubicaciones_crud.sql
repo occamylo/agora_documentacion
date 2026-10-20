@@ -15,7 +15,7 @@ INSERT INTO ubicaciones_crud.tipo_lugar (
         fecha_creacion,
         fecha_modificacion
     )
-SELECT 'Direcciones',
+SELECT 'DIRECCIONES',
     'Tipos de vía para direcciones',
     'DIRECCIONES',
     TRUE,
@@ -31,7 +31,7 @@ SELECT 'Direcciones',
 WHERE NOT EXISTS (
         SELECT 1
         FROM ubicaciones_crud.tipo_lugar tp
-        WHERE tp.nombre = 'Direcciones'
+        WHERE tp.nombre = 'DIRECCIONES'
     );
 -- ============================================================
 -- 1.2 TIPO DE LUGAR: INTERIORES
@@ -45,7 +45,7 @@ INSERT INTO ubicaciones_crud.tipo_lugar (
         fecha_creacion,
         fecha_modificacion
     )
-SELECT 'Interiores',
+SELECT 'INTERIORES',
     'Complementos para direcciones',
     'INTERIORES',
     TRUE,
@@ -61,7 +61,7 @@ SELECT 'Interiores',
 WHERE NOT EXISTS (
         SELECT 1
         FROM ubicaciones_crud.tipo_lugar tp
-        WHERE tp.nombre = 'Interiores'
+        WHERE tp.nombre = 'INTERIORES'
     );
 -- ============================================================
 -- 2.1 OPCIONES DE DIRECCIONES
@@ -86,7 +86,7 @@ FROM (
             (5, 'DIAGONAL'),
             (6, 'TRANSVERSAL')
     ) AS v(numero_orden, nombre)
-    JOIN ubicaciones_crud.tipo_lugar tp ON tp.nombre = 'Direcciones'
+    JOIN ubicaciones_crud.tipo_lugar tp ON tp.nombre = 'DIRECCIONES'
 WHERE NOT EXISTS (
         SELECT 1
         FROM ubicaciones_crud.lugar l
@@ -189,7 +189,7 @@ FROM (
             (78, 'ZONA'),
             (79, 'ZONA FRANCA')
     ) AS v(numero_orden, nombre)
-    JOIN ubicaciones_crud.tipo_lugar tp ON tp.nombre = 'Interiores'
+    JOIN ubicaciones_crud.tipo_lugar tp ON tp.nombre = 'INTERIORES'
 WHERE NOT EXISTS (
         SELECT 1
         FROM ubicaciones_crud.lugar l
