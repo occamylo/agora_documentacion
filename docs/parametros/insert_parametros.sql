@@ -201,7 +201,7 @@ INSERT INTO parametros.tipo_parametro (
         area_tipo_id
     )
 SELECT 'Información tributaria complementaria',
-    'Agrupa los parámetros relacionados con las obligaciones, condiciones y características tributarias de la persona o entidad.',
+    'Agrupa los parámetros relacionados con las obligaciones y características tributarias.',
     'TRIBUTARIA_COMP',
     TRUE,
     COALESCE(
@@ -763,14 +763,14 @@ FROM (
             ),
             (
                 '60',
-                'Autorretención por concepto de intereses y rendimientos financieros de entidades vigiladas por la Superintendencia Financiera.',
-                'Autorretención por concepto de intereses y rendimientos financieros de entidades vigiladas por la Superintendencia Financiera.',
+                'Autorretención por intereses y rendimientos financieros bajo la Superintendencia Financiera.',
+                'Autorretención por intereses y rendimientos financieros bajo la Superintendencia Financiera.',
                 42
             ),
             (
                 '61',
-                'Autorretención por concepto de comisiones de entidades vigiladas por la Superintendencia Financiera.',
-                'Autorretención por concepto de comisiones de entidades vigiladas por la Superintendencia Financiera.',
+                'Autorretención por comisiones bajo la Superintendencia Financiera.',
+                'Autorretención por comisiones bajo la Superintendencia Financiera.',
                 43
             ),
             (
@@ -947,33 +947,33 @@ SELECT v.nombre,
     NULL
 FROM (
         VALUES (
-                'CONSENTIMIENTO_REGISTRO_VERIFICACION',
+                'CON_REG_VER',
                 'Consentimiento expreso de registro y verificación',
                 'Consentimiento expreso de registro y verificación',
                 1
             ),
             (
-                'DECLARACION_INEXISTENCIA_INHABILIDADES',
-                'Declaración juramentada de inexistencia de inhabilidades, incompatibilidades y conflicto de intereses',
-                'Declaración juramentada de inexistencia de inhabilidades, incompatibilidades y conflicto de intereses',
+                'DEC_INEX_INHAB',
+                'Declaración juramentada de no inhabilidades, incompatibilidades y conflicto de intereses',
+                'Declaración juramentada de no inhabilidades, incompatibilidades y conflicto de intereses',
                 2
             ),
             (
-                'DECLARACION_VERACIDAD_ACTUALIZACION',
+                'DEC_VER_ACT',
                 'Declaración de veracidad, actualización y completitud de la información',
                 'Declaración de veracidad, actualización y completitud de la información',
                 3
             ),
             (
-                'DECLARACION_NO_INHABILIDADES_SOCIEDAD',
+                'DECL_NO_INH_SOC',
                 'Declaración de no inhabilidades o incompatibilidades para la sociedad y sus representantes',
                 'Declaración de no inhabilidades o incompatibilidades para la sociedad y sus representantes',
                 4
             ),
             (
-                'DECLARACION_AUTORIZACION_SAGRILAFT',
-                'Declaración de autorización para validaciones institucionales de cumplimiento y prevención de riesgos (SAGRILAFT)',
-                'Declaración de autorización para validaciones institucionales de cumplimiento y prevención de riesgos (SAGRILAFT)',
+                'DEC_AUT_SAGRILAFT',
+                'Declaración de autorización a validaciones inst. de cumplimiento y prev. de riesgos (SAGRILAFT)',
+                'Declaración de autorización a validaciones inst. de cumplimiento y prev. de riesgos (SAGRILAFT)',
                 5
             )
     ) AS v(
@@ -1022,20 +1022,20 @@ SELECT v.nombre,
 FROM (
         VALUES ('RUT', 'RUT', 'Documento RUT', 1),
             (
-                'CERTIFICADO_EXISTENCIA',
+                'CERT_EXISTENCIA',
                 'Certificado de existencia',
                 'Documento de Certificado de existencia',
                 2
             ),
             (
-                'CEDULA_REPRESENTANTE',
+                'CED_REPRESENTANTE',
                 'Cédula del representante',
                 'Documento, Cédula del representante',
                 3
             ),
             ('RUP', 'RUP', 'Documento RUP', 4),
             (
-                'CERTIFICACION_APORTES',
+                'CERT_APORTES',
                 'Certificación de aportes',
                 'Documento, Certificación de aportes',
                 5
